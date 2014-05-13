@@ -31,12 +31,22 @@
         <format>tar.gz</format>
     </formats>
     <includeBaseDirectory>false</includeBaseDirectory>
+    <files>
+        <file>
+            <source>README.txt</source>
+        </file>
+    </files>
     <dependencySets>
         <dependencySet>
             <includes>
                 <include>org.osiam:server-distribution</include>
             </includes>
             <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>README.txt</exclude>
+                </excludes>
+            </unpackOptions>
             <useProjectArtifact>false</useProjectArtifact>
         </dependencySet>
         <dependencySet>
@@ -45,6 +55,11 @@
             </includes>
             <outputDirectory>${artifact.artifactId}</outputDirectory>
             <unpack>true</unpack>
+            <unpackOptions>
+                <excludes>
+                    <exclude>README.txt</exclude>
+                </excludes>
+            </unpackOptions>
             <useProjectArtifact>false</useProjectArtifact>
         </dependencySet>
     </dependencySets>
