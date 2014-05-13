@@ -37,6 +37,7 @@
                 <include>org.osiam:server-distribution</include>
             </includes>
             <unpack>true</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
         </dependencySet>
         <dependencySet>
             <includes>
@@ -44,6 +45,7 @@
             </includes>
             <outputDirectory>${artifact.artifactId}</outputDirectory>
             <unpack>true</unpack>
+            <useProjectArtifact>false</useProjectArtifact>
         </dependencySet>
     </dependencySets>
 </assembly>
