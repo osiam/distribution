@@ -4,7 +4,7 @@ Please have a look at the website of OSIAM: https://www.osiam.org
 GitHub: https://github.com/osiam
 Jira: https://jira.osiam.org
 
-If you want to run OSIAM server and the addon-self-adminstration, please have a look at the GitHub Wiki:
+If you want to run OSIAM server and the addon-self-administration, please have a look at the GitHub Wiki:
 https://github.com/osiam/server/wiki
 https://github.com/osiam/addon-self-administration/wiki
 

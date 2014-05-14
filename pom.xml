@@ -35,13 +35,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
         <org.osiam.server-distribution.version>0.22-SNAPSHOT</org.osiam.server-distribution.version>
-        <org.osiam.addon-self-administration.version>0.1-SNAPSHOT</org.osiam.addon-self-administration.version>
+        <org.osiam.addon-self-administration.version>1.0-SNAPSHOT</org.osiam.addon-self-administration.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.osiam</groupId>
-            <artifactId>server-distribution</artifactId>
+            <artifactId>osiam-server-distribution</artifactId>
             <version>${org.osiam.server-distribution.version}</version>
             <type>zip</type>
             <classifier>distribution</classifier>
