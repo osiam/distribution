@@ -34,8 +34,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
-        <org.osiam.server-distribution.version>0.22-SNAPSHOT</org.osiam.server-distribution.version>
-        <org.osiam.addon-self-administration.version>1.0-SNAPSHOT</org.osiam.addon-self-administration.version>
+        <org.osiam.server-distribution.version>1.0</org.osiam.server-distribution.version>
+        <org.osiam.addon-self-administration.version>1.0</org.osiam.addon-self-administration.version>
     </properties>
 
     <scm>
