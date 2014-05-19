@@ -39,7 +39,7 @@
     <dependencySets>
         <dependencySet>
             <includes>
-                <include>org.osiam:server-distribution</include>
+                <include>org.osiam:osiam-server-distribution</include>
             </includes>
             <unpack>true</unpack>
             <unpackOptions>
