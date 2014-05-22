@@ -1,0 +1,38 @@
+#!/bin/sh
+# prerm script for osiam
+
+OSIAM_USER='osiam'
+OSIAM_GROUP='osiam'
+
+case "$1" in
+    remove)
+
+        set -e
+        
+        rm -rf /var/cache/osiam/temp        
+        rm -rf /var/cache/osiam/work
+
+        rm -rf /usr/share/osiam
+
+        update-rc.d -f osiam remove
+    ;;
+
+    purge)
+        set +e
+
+        # Put all files owned by group osiam back into root group before deleting
+        # the osiam user and group
+        chown -Rhf root:root /etc/osiam/ || true
+
+        deluser --quiet $OSIAM_USER
+        delgroup --quiet $OSIAM_GROUP
+
+        rm -rf /var/log/osiam
+
+        set -e
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

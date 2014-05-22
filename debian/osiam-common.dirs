@@ -1,0 +1,6 @@
+etc/osiam
+etc/osiam/tomcat-conf
+usr/share/osiam/webapps
+var/log/osiam
+var/cache/osiam/temp
+var/cache/osiam/work

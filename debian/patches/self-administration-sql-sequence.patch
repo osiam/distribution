@@ -1,0 +1,25 @@
+removed select of sequence which was droped in osiam 0.21 already.
+--- a/target/addon-self-administration/sql/registration_extension.sql
++++ b/target/addon-self-administration/sql/registration_extension.sql
+@@ -1,13 +1,9 @@
+---
+--- Updating hibernate sequence start value
+---
+-SELECT pg_catalog.setval('hibernate_sequence', 10, false);
+ 
+ --
+ -- Extension data for registration purpose
+ --
+ 
+-INSERT INTO scim_extension VALUES (5, 'urn:scim:schemas:osiam:2.0:Registration');
++INSERT INTO scim_extension VALUES (5, 'urn:scim:schemas:osiam:1.0:Registration');
+ 
+ INSERT INTO scim_extension_field (internal_id, is_required, name, type, extension_internal_id)
+ 	VALUES (6, false, 'activationToken', 'STRING', 5);
+@@ -16,4 +12,4 @@
+ INSERT INTO scim_extension_field (internal_id, is_required, name, type, extension_internal_id)
+ 	VALUES (8, false, 'emailConfirmToken', 'STRING', 5);
+ INSERT INTO scim_extension_field (internal_id, is_required, name, type, extension_internal_id)
+-	VALUES (9, false, 'tempMail', 'STRING', 5);
+\ Kein Zeilenumbruch am Dateiende.
++	VALUES (9, false, 'tempMail', 'STRING', 5);

@@ -1,0 +1,9 @@
+Template: osiam/setup-username
+Type: string
+Default: admin
+Description: Username for the osiam database:
+
+Template: osiam/setup-password
+Type: password
+Default:
+Description: Password for for the osiam database:

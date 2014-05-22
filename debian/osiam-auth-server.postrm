@@ -1,0 +1,20 @@
+#!/bin/sh -e
+# prerm script for osiam
+
+set -e
+
+case "$1" in
+    remove)
+
+        rm -rf /usr/share/dbconfig-common/data/osiam-auth-server
+        rm -rf /usr/share/osiam/webapps/osiam-auth-server
+        
+        service osiam status \
+            && service osiam restart
+
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
