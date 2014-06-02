@@ -36,6 +36,7 @@
         <java.version>1.7</java.version>
         <org.osiam.server-distribution.version>1.0</org.osiam.server-distribution.version>
         <org.osiam.addon-self-administration.version>1.0</org.osiam.addon-self-administration.version>
+        <project.finalname>${project.artifactId}-${project.version}</project.finalname>
     </properties>
 
     <scm>
@@ -66,7 +67,6 @@
             <artifactId>osiam-server-distribution</artifactId>
             <version>${org.osiam.server-distribution.version}</version>
             <type>zip</type>
-            <classifier>distribution</classifier>
         </dependency>
         <dependency>
             <groupId>org.osiam</groupId>
@@ -78,9 +78,7 @@
     </dependencies>
 
     <build>
-        <finalName>osiam-${project.version}-dist</finalName>
         <plugins>
-
             <plugin>
                 <groupId>com.github.goldin</groupId>
                 <artifactId>copy-maven-plugin</artifactId>
@@ -102,7 +100,6 @@
                                             <artifactId>osiam-server-distribution</artifactId>
                                             <version>${org.osiam.server-distribution.version}</version>
                                             <type>zip</type>
-                                            <classifier>distribution</classifier>
                                         </dependency>
                                         <dependency>
                                             <groupId>org.osiam</groupId>
@@ -115,26 +112,33 @@
                                     <unpack>true</unpack>
                                 </resource>
                                 <resource>
-                                    <targetPath>${project.build.directory}/assembly-tmp/final/addon-self-administration</targetPath>
+                                    <targetPath>${project.build.directory}/assembly-tmp/final/${project.finalname}/addon-self-administration</targetPath>
                                     <directory>${project.build.directory}/assembly-tmp/raw/addon-self-administration-${org.osiam.addon-self-administration.version}</directory>
                                     <move>true</move>
                                     <preservePath>true</preservePath>
                                     <exclude>**/README.txt</exclude>
                                 </resource>
                                 <resource>
-                                    <targetPath>${project.build.directory}/assembly-tmp/final/osiam-server</targetPath>
-                                    <directory>${project.build.directory}/assembly-tmp/raw/osiam-server-${org.osiam.server-distribution.version}-dist</directory>
+                                    <targetPath>${project.build.directory}/assembly-tmp/final/${project.finalname}/osiam-server</targetPath>
+                                    <directory>${project.build.directory}/assembly-tmp/raw/osiam-server-distribution-${org.osiam.server-distribution.version}</directory>
                                     <move>true</move>
                                     <preservePath>true</preservePath>
                                     <exclude>**/README.txt</exclude>
                                 </resource>
                                 <resource>
-                                    <targetPath>${project.build.directory}/assembly-tmp/final</targetPath>
+                                    <targetPath>${project.build.directory}/assembly-tmp/final/${project.finalname}/</targetPath>
                                     <file>${basedir}/README.txt</file>
                                 </resource>
                                 <resource>
+                                    <targetPath>${project.build.directory}/${project.artifactId}-${project.version}.tar.gz</targetPath>
+                                    <directory>${project.build.directory}/assembly-tmp/final/${project.finalname}</directory>
+                                    <pack>true</pack>
+                                    <prefix>${project.artifactId}-${project.version}</prefix>
+                                    <attachArtifact>true</attachArtifact>
+                                </resource>
+                                <resource>
                                     <targetPath>${project.build.directory}/${project.artifactId}-${project.version}.zip</targetPath>
-                                    <directory>${project.build.directory}/assembly-tmp/final</directory>
+                                    <directory>${project.build.directory}/assembly-tmp/final/${project.finalname}</directory>
                                     <pack>true</pack>
                                     <prefix>${project.artifactId}-${project.version}</prefix>
                                     <attachArtifact>true</attachArtifact>
