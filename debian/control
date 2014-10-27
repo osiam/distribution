@@ -1,0 +1,40 @@
+Source: osiam
+Maintainer: Sebastian Mancke <s.mancke@tarent.de>
+Section: non-free/web
+Priority: optional
+Standards-Version: 3.9.5
+Build-Depends: debhelper (>= 9), quilt
+Depends: ${misc:Depends}
+Homepage: http://www.osiam.org
+
+Package: osiam-common
+Architecture: all
+Depends: tomcat7-common, adduser, ${misc:Depends}
+Description: OSIAM common package.
+ This package contains the tomcat instance configuring
+ for all osiam services.
+
+Package: osiam-auth-server
+Architecture: all
+Depends: osiam-common, dbconfig-common, ${misc:Depends}
+Description: OSIAM authorisation server.
+ The server component for login and ticket granting.
+
+Package: osiam-resource-server
+Architecture: all
+Depends: osiam-common, dbconfig-common, ${misc:Depends}
+Description: OSIAM resource server.
+ The server component for management of the identity data over a SCIM2 API.
+
+Package: osiam-addon-self-administration
+Architecture: all
+Suggests: osiam-resource-server
+Depends: dbconfig-common, osiam-common, ${misc:Depends}
+Description: OSIAM self administration web frontends.
+ The OSIAM frontends for registration and password self service.
+
+Package: osiam
+Architecture: all
+Depends: osiam-auth-server, osiam-resource-server, osiam-addon-self-administration
+Description: Metapackage depending on all OSIAM sub-packages.
+ Does nothing except installing all other osiam packages.

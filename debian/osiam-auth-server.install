@@ -1,0 +1,4 @@
+target/osiam-auth-server/osiam-auth-server.war         usr/share/osiam/webapps
+target/osiam-auth-server/sql/*                         usr/share/osiam/sql/osiam-auth-server
+
+target/osiam-auth-server/configuration/*               etc/osiam

@@ -1,0 +1,5 @@
+osiam (1.0.0) unstable; urgency=medium
+
+  * Debian package for OSIAM 1.0 release
+
+ -- Sebastian Mancke <s.mancke@tarent.de>  Tue, 20 May 2014 17:18:25 +0200

@@ -1,0 +1,42 @@
+#!/bin/sh
+# postinst script for osiam
+case "$1" in
+    configure)
+
+        set -e
+
+        OSIAM_USER='osiam'
+        OSIAM_GROUP='osiam'
+
+        ## database coniguration with dbconfig-common
+        mkdir -p /usr/share/dbconfig-common/data/osiam-resource-server/install/
+        test -e /usr/share/dbconfig-common/data/osiam-resource-server/install/pgsql \
+            || ln -s /usr/share/osiam/sql/osiam-resource-server/init_ddl.sql /usr/share/dbconfig-common/data/osiam-resource-server/install/pgsql
+
+        . /usr/share/debconf/confmodule
+        . /usr/share/dbconfig-common/dpkg/postinst.pgsql
+        dbc_dbuser="osiam"
+        dbc_dbname="osiam"
+
+        if ! dbc_go osiam-resource-server $@ ; then
+	    echo 'Automatic configuration using dbconfig-common failed!'
+        fi
+
+        sed -i "s/localhost\:8080/localhost\:6001/g" /etc/osiam/resource-server.properties
+        sed -i "s/org.osiam.resource-server.db.username=ong/org.osiam.resource-server.db.username=$dbc_dbuser/g" /etc/osiam/resource-server.properties
+        sed -i "s/org.osiam.resource-server.db.password=b4s3dg0d/org.osiam.resource-server.db.password=$dbc_dbpass/g" /etc/osiam/resource-server.properties
+        sed -i "s/org.osiam.resource-server.db.url=jdbc\:postgresql\:\/\/localhost\:5432\/ong/org.osiam.resource-server.db.url=jdbc:postgresql:\/\/localhost:5432\/$dbc_dbname/g" /etc/osiam/resource-server.properties
+
+
+        chown -Rh root:$OSIAM_GROUP /etc/osiam/resource-server.properties
+        chmod 640 /etc/osiam/resource-server.properties
+
+        service osiam restart
+
+    ;;
+esac
+
+
+#DEBHELPER#
+
+exit 0

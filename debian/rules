@@ -1,0 +1,47 @@
+#!/usr/bin/make -f
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+include /usr/share/quilt/quilt.make
+REVISION := $(shell head -1 debian/changelog | sed 's/.*(//;s/).*//;s/.*-//')
+
+build-arch:
+
+build: build-indep
+build-indep:
+        # run the maven buid within the debian build.
+	mvn -Dmaven.repo.local=$(CURDIR)/debian/maven-repo -Pintegration package
+	tar  xvfz  target/osiam*distribution.tar.gz -C ./target
+	dh_quilt_patch
+
+clean:
+	dh_quilt_unpatch
+	mvn -Dmaven.repo.local=$(CURDIR)/debian/maven-repo -Pintegration clean
+	dh_testdir
+	dh_testroot
+	dh_clean
+
+binary-indep:
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	dh_install
+	dh_installchangelogs
+	dh_installdocs
+	dh_installexamples
+	dh_installdebconf
+	dh_installman
+	dh_lintian
+	dh_link
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary-arch:
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

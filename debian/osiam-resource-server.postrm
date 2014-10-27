@@ -1,0 +1,21 @@
+#!/bin/sh
+# prerm script for osiam
+
+set -e
+
+
+case "$1" in
+    remove)
+        
+        rm -rf /usr/share/dbconfig-common/data/osiam-resource-server
+        rm -rf /usr/share/osiam/webapps/osiam-resource-server
+        
+        service osiam status \
+            && service osiam restart
+        
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

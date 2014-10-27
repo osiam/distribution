@@ -1,0 +1,2 @@
+debian/tomcat/conf/*         etc/osiam/tomcat-conf/
+debian/tomcat/osiam     etc/init.d/
