@@ -1,0 +1,3 @@
+target/addon-self-administration/addon-self-administration.war usr/share/osiam/webapps
+target/addon-self-administration/sql/* usr/share/osiam/sql/osiam-addon-self-administration
+target/addon-self-administration/configuration/* etc/osiam/

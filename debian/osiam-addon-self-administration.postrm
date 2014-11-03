@@ -1,0 +1,17 @@
+#!/bin/sh
+# prerm script for osiam
+set -e
+
+case "$1" in
+    remove)
+
+        rm -rf /usr/share/dbconfig-common/data/osiam-addon-self-administration
+        rm -rf /usr/share/osiam/webapps/addon-self-administration
+
+    ;;
+
+esac
+
+#DEBHELPER#
+
+exit 0
