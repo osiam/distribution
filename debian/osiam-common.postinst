@@ -1,0 +1,43 @@
+#!/bin/sh
+# postinst script for osiam
+case "$1" in
+    configure)
+
+        set -e
+
+        OSIAM_USER='osiam'
+        OSIAM_GROUP='osiam'
+
+        test -e /usr/share/osiam/conf || ln -s /etc/osiam/tomcat-conf /usr/share/osiam/conf
+        test -e /usr/share/osiam/logs || ln -s /var/log/osiam /usr/share/osiam/logs
+        test -e /usr/share/osiam/temp || ln -s /var/cache/osiam/temp /usr/share/osiam/temp
+        test -e /usr/share/osiam/work || ln -s /var/cache/osiam/work /usr/share/osiam/work
+        test -e /usr/share/osiam/lib || ln -s /etc/osiam /usr/share/osiam/lib
+
+
+	      if ! getent group "$OSIAM_GROUP" > /dev/null 2>&1 ; then
+	          addgroup --system "$OSIAM_GROUP" --quiet
+	      fi
+	      if ! id $OSIAM_USER > /dev/null 2>&1 ; then
+	          adduser --system --home /usr/share/osiam --no-create-home \
+		      --ingroup "$OSIAM_GROUP" --disabled-password --shell /bin/false \
+		      "$OSIAM_USER"
+	      fi
+	      chown -R $OSIAM_USER:adm /var/log/osiam /var/cache/osiam
+	      chmod 750 /var/log/osiam /var/cache/osiam
+
+	      # configuration files should not be modifiable by osiam user, as this can be a security issue
+	      # (an attacker may insert code in a webapp and have access to all tomcat configuration)
+	      # but those files should be readable by osiam, so we set the group to osiam
+	      chown -Rh root:$OSIAM_GROUP /etc/osiam/*
+	      chown -Rh $OSIAM_USER:$OSIAM_GROUP /usr/share/osiam/webapps
+	      chmod 775 /usr/share/osiam/webapps
+
+        update-rc.d osiam defaults
+    ;;
+esac
+
+
+#DEBHELPER#
+
+exit 0

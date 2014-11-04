@@ -1,0 +1,10 @@
+#!/bin/sh
+# prerm script for osiam
+
+set -e
+
+service osiam stop
+
+#DEBHELPER#
+
+exit 0

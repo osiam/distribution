@@ -1,0 +1,42 @@
+#!/bin/sh
+# postinst script for osiam
+case "$1" in
+    configure)
+
+        set -e
+
+        OSIAM_USER='osiam'
+        OSIAM_GROUP='osiam'
+        
+        ## database configuration with dbconfig-common
+        SQLDIR=/usr/share/osiam/sql/osiam-addon-self-administration
+                
+        cat $SQLDIR/init_data.sql > $SQLDIR/import.sql
+        cat $SQLDIR/example_data.sql >> $SQLDIR/import.sql
+        
+        sed -i "s/localhost\:8080/localhost\:6001/g" /usr/share/osiam/sql/osiam-addon-self-administration/import.sql
+
+        mkdir -p /usr/share/dbconfig-common/data/osiam-addon-self-administration/install/
+        test -e /usr/share/dbconfig-common/data/osiam-addon-self-administration/install/pgsql || ln -s $SQLDIR/import.sql /usr/share/dbconfig-common/data/osiam-addon-self-administration/install/pgsql
+
+        . /usr/share/debconf/confmodule
+        . /usr/share/dbconfig-common/dpkg/postinst.pgsql
+        dbc_dbuser="osiam"
+        dbc_dbname="osiam"
+
+        if ! dbc_go osiam-addon-self-administration $@ ; then
+	        echo 'Automatic configuration using dbconfig-common failed!'
+        fi
+
+        sed -i "s/localhost\:8080/localhost\:6001/g" /etc/osiam/addon-self-administration.properties
+
+        chown -Rh root:$OSIAM_GROUP /etc/osiam/addon-self-administration.properties
+        chmod 640 /etc/osiam/addon-self-administration.properties
+        
+    ;;
+esac
+
+
+#DEBHELPER#
+
+exit 0
