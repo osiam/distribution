@@ -1,5 +1,5 @@
-target/addon-administration/addon-administration.war usr/share/osiam/webapps
-target/addon-administration/sql/* usr/share/osiam/sql/osiam-addon-administration
-target/addon-administration/configuration/* etc/osiam/
+addon-administration/addon-administration.war usr/share/osiam/webapps
+addon-administration/sql/* usr/share/osiam/sql/osiam-addon-administration
+addon-administration/configuration/* etc/osiam/
 debian/sql/osiam-addon-administration/* usr/share/osiam/sql/osiam-addon-administration
 
