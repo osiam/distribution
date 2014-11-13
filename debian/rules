@@ -8,6 +8,7 @@ REVISION := $(shell head -1 debian/changelog | sed 's/.*(//;s/).*//;s///')
 build-arch:
 
 build: build-indep
+
 build-indep:
 	dh_quilt_patch
 
@@ -21,9 +22,11 @@ binary-indep:
 	dh_testdir
 	dh_testroot
 	dh_prep
-	mkdir debian/tmp
+
 	unzip target/osiam-distribution-$(REVISION).zip -d target
-	mv target/osiam-distribution-$(REVISION)/* debian/tmp
+	mkdir debian/tmp
+	mv $(TARGET)/* debian/tmp
+
 	dh_installdirs
 	dh_install
 	dh_installchangelogs
