@@ -3,7 +3,7 @@
 export DH_VERBOSE=1
 
 include /usr/share/quilt/quilt.make
-REVISION := $(shell head -1 debian/changelog | sed 's/.*(//;s/).*//;s/.*-//')
+REVISION := $(shell head -1 debian/changelog | sed 's/.*(//;s/).*//;s///')
 
 build-arch:
 
@@ -21,6 +21,9 @@ binary-indep:
 	dh_testdir
 	dh_testroot
 	dh_prep
+	mkdir debian/tmp
+	unzip target/osiam-distribution-$(REVISION).zip -d target
+	mv target/osiam-distribution-$(REVISION)/* debian/tmp
 	dh_installdirs
 	dh_install
 	dh_installchangelogs
