@@ -4,7 +4,6 @@ export DH_VERBOSE=1
 
 include /usr/share/quilt/quilt.make
 REVISION := $(shell head -1 debian/changelog | sed 's/.*(//;s/).*//;s///')
-TARGET := target/osiam-distribution-$(REVISION)
 
 build-arch:
 
