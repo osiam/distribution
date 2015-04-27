@@ -9,7 +9,7 @@ Homepage: http://www.osiam.org
 
 Package: osiam-common
 Architecture: all
-Depends: tomcat7-common, openjdk-7-jre, adduser, ${misc:Depends}
+Depends: tomcat7-common, openjdk-7-jre-headless, adduser, ${misc:Depends}
 Description: OSIAM common package.
  This package contains the tomcat instance configuring
  for all osiam services.
