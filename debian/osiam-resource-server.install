@@ -1,3 +1,2 @@
 osiam-server/osiam-resource-server/osiam-resource-server.war usr/share/osiam/webapps
-osiam-server/osiam-resource-server/sql/* usr/share/osiam/sql/osiam-resource-server
 osiam-server/osiam-resource-server/configuration/* etc/osiam
