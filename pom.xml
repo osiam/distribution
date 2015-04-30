@@ -186,7 +186,7 @@
                                 <resource>
                                     <targetPath>${project.build.directory}/assembly-tmp/final/${project.finalname}/
                                     </targetPath>
-                                    <file>${basedir}/README.txt</file>
+                                    <file>${basedir}/README.md</file>
                                 </resource>
                                 <resource>
                                     <targetPath>
