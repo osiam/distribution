@@ -22,7 +22,8 @@
     ~ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.osiam</groupId>
@@ -64,7 +65,7 @@
         <java.version>1.7</java.version>
 
         <version.osiam.osiam-server-distribution>2.0</version.osiam.osiam-server-distribution>
-        <version.osiam.addon-self-administration>1.3.2</version.osiam.addon-self-administration>
+        <version.osiam.addon-self-administration>1.4</version.osiam.addon-self-administration>
         <version.osiam.addon-administration>1.4</version.osiam.addon-administration>
 
         <project.finalname>${project.artifactId}-${project.version}</project.finalname>
