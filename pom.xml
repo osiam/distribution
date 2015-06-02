@@ -22,7 +22,8 @@
     ~ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.osiam</groupId>
@@ -63,9 +64,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
 
-        <version.osiam.osiam-server-distribution>2.0</version.osiam.osiam-server-distribution>
-        <version.osiam.addon-self-administration>1.4</version.osiam.addon-self-administration>
-        <version.osiam.addon-administration>1.4</version.osiam.addon-administration>
+        <version.osiam.auth-server>2.1.2</version.osiam.auth-server>
+        <version.osiam.resource-server>2.1</version.osiam.resource-server>
+        <version.osiam.addon-self-administration>1.5</version.osiam.addon-self-administration>
+        <version.osiam.addon-administration>1.5</version.osiam.addon-administration>
 
         <project.finalname>${project.artifactId}-${project.version}</project.finalname>
     </properties>
@@ -73,9 +75,17 @@
     <dependencies>
         <dependency>
             <groupId>org.osiam</groupId>
-            <artifactId>osiam-server-distribution</artifactId>
-            <version>${version.osiam.osiam-server-distribution}</version>
+            <artifactId>auth-server</artifactId>
+            <version>${version.osiam.auth-server}</version>
             <type>zip</type>
+            <classifier>distribution</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.osiam</groupId>
+            <artifactId>resource-server</artifactId>
+            <version>${version.osiam.resource-server}</version>
+            <type>zip</type>
+            <classifier>distribution</classifier>
         </dependency>
         <dependency>
             <groupId>org.osiam</groupId>
@@ -130,9 +140,17 @@
                                     <dependencies>
                                         <dependency>
                                             <groupId>org.osiam</groupId>
-                                            <artifactId>osiam-server-distribution</artifactId>
-                                            <version>${version.osiam.osiam-server-distribution}</version>
+                                            <artifactId>auth-server</artifactId>
+                                            <version>${version.osiam.auth-server}</version>
                                             <type>zip</type>
+                                            <classifier>distribution</classifier>
+                                        </dependency>
+                                        <dependency>
+                                            <groupId>org.osiam</groupId>
+                                            <artifactId>resource-server</artifactId>
+                                            <version>${version.osiam.resource-server}</version>
+                                            <type>zip</type>
+                                            <classifier>distribution</classifier>
                                         </dependency>
                                         <dependency>
                                             <groupId>org.osiam</groupId>
@@ -153,6 +171,30 @@
                                 </resource>
                                 <resource>
                                     <targetPath>
+                                        ${project.build.directory}/assembly-tmp/final/${project.finalname}/auth-server
+                                    </targetPath>
+                                    <directory>
+                                        ${project.build.directory}/assembly-tmp/raw/auth-server-${version.osiam.auth-server}
+                                    </directory>
+                                    <move>true</move>
+                                    <preservePath>true</preservePath>
+                                    <exclude>**/README.md</exclude>
+                                    <exclude>**/CHANGELOG.md</exclude>
+                                </resource>
+                                <resource>
+                                    <targetPath>
+                                        ${project.build.directory}/assembly-tmp/final/${project.finalname}/resource-server
+                                    </targetPath>
+                                    <directory>
+                                        ${project.build.directory}/assembly-tmp/raw/resource-server-${version.osiam.resource-server}
+                                    </directory>
+                                    <move>true</move>
+                                    <preservePath>true</preservePath>
+                                    <exclude>**/README.md</exclude>
+                                    <exclude>**/CHANGELOG.md</exclude>
+                                </resource>
+                                <resource>
+                                    <targetPath>
                                         ${project.build.directory}/assembly-tmp/final/${project.finalname}/addon-self-administration
                                     </targetPath>
                                     <directory>
@@ -161,17 +203,7 @@
                                     <move>true</move>
                                     <preservePath>true</preservePath>
                                     <exclude>**/README.txt</exclude>
-                                </resource>
-                                <resource>
-                                    <targetPath>
-                                        ${project.build.directory}/assembly-tmp/final/${project.finalname}/osiam-server
-                                    </targetPath>
-                                    <directory>
-                                        ${project.build.directory}/assembly-tmp/raw/osiam-server-distribution-${version.osiam.osiam-server-distribution}
-                                    </directory>
-                                    <move>true</move>
-                                    <preservePath>true</preservePath>
-                                    <exclude>**/README.txt</exclude>
+                                    <exclude>**/CHANGELOG.md</exclude>
                                 </resource>
                                 <resource>
                                     <targetPath>
@@ -182,6 +214,7 @@
                                     </directory>
                                     <move>true</move>
                                     <preservePath>true</preservePath>
+                                    <exclude>**/CHANGELOG.md</exclude>
                                 </resource>
                                 <resource>
                                     <targetPath>${project.build.directory}/assembly-tmp/final/${project.finalname}/
