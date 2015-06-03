@@ -171,7 +171,7 @@
                                 </resource>
                                 <resource>
                                     <targetPath>
-                                        ${project.build.directory}/assembly-tmp/final/${project.finalname}/auth-server
+                                        ${project.build.directory}/assembly-tmp/final/${project.finalname}/osiam-server/osiam-auth-server
                                     </targetPath>
                                     <directory>
                                         ${project.build.directory}/assembly-tmp/raw/auth-server-${version.osiam.auth-server}
@@ -179,11 +179,10 @@
                                     <move>true</move>
                                     <preservePath>true</preservePath>
                                     <exclude>**/README.md</exclude>
-                                    <exclude>**/CHANGELOG.md</exclude>
                                 </resource>
                                 <resource>
                                     <targetPath>
-                                        ${project.build.directory}/assembly-tmp/final/${project.finalname}/resource-server
+                                        ${project.build.directory}/assembly-tmp/final/${project.finalname}/osiam-server/osiam-resource-server
                                     </targetPath>
                                     <directory>
                                         ${project.build.directory}/assembly-tmp/raw/resource-server-${version.osiam.resource-server}
@@ -191,7 +190,6 @@
                                     <move>true</move>
                                     <preservePath>true</preservePath>
                                     <exclude>**/README.md</exclude>
-                                    <exclude>**/CHANGELOG.md</exclude>
                                 </resource>
                                 <resource>
                                     <targetPath>
@@ -203,7 +201,6 @@
                                     <move>true</move>
                                     <preservePath>true</preservePath>
                                     <exclude>**/README.txt</exclude>
-                                    <exclude>**/CHANGELOG.md</exclude>
                                 </resource>
                                 <resource>
                                     <targetPath>
@@ -214,7 +211,6 @@
                                     </directory>
                                     <move>true</move>
                                     <preservePath>true</preservePath>
-                                    <exclude>**/CHANGELOG.md</exclude>
                                 </resource>
                                 <resource>
                                     <targetPath>${project.build.directory}/assembly-tmp/final/${project.finalname}/
