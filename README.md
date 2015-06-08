@@ -22,8 +22,8 @@ mentioned components with it's default setup and data.
 
 If you still like to install the OSIAM distribution by yourself or need to
 update the your configuration, just download the latest version
-[here](https://github.com/osiam/distribution/releases). Then follow the
-instructions below.
+[here](https://github.com/osiam/osiam/releases). Then follow the instructions
+below.
 
 The database should be setup as a first step:
 
