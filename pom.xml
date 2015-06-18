@@ -67,10 +67,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
 
-        <version.osiam.auth-server>2.1.2</version.osiam.auth-server>
-        <version.osiam.resource-server>2.1</version.osiam.resource-server>
-        <version.osiam.addon-self-administration>1.5</version.osiam.addon-self-administration>
-        <version.osiam.addon-administration>1.5</version.osiam.addon-administration>
+        <version.osiam.auth-server>2.2</version.osiam.auth-server>
+        <version.osiam.resource-server>2.2</version.osiam.resource-server>
+        <version.osiam.addon-self-administration>1.6</version.osiam.addon-self-administration>
+        <version.osiam.addon-administration>1.6</version.osiam.addon-administration>
 
         <project.finalname>${project.artifactId}-${project.version}</project.finalname>
     </properties>
