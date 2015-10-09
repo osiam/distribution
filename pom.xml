@@ -60,7 +60,7 @@
     <scm>
         <connection>scm:git:ssh://git@github.com/osiam/distribution.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/osiam/distribution.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>maintenance-2.x</tag>
     </scm>
 
     <properties>
