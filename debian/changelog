@@ -1,3 +1,9 @@
+osiam (2.4) unstable; urgency=medium
+
+  * Debian package for OSIAM 2.4
+
+ -- Thomas Krille <t.krille@tarent.de>  Sat, 10 Oct 2015 00:24:28 +0200
+
 osiam (2.3) unstable; urgency=medium
 
   * Debian package for OSIAM 2.3
