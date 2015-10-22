@@ -1,7 +1,7 @@
 # OSIAM
 
-This is the OSIAM main distribution. It contains the `auth-server`,
-`resource-server`, `addon-self-administration`, and `addon-administration`. For
+This is the OSIAM main distribution. It contains `osiam`,
+`addon-self-administration`, and `addon-administration`. For
 more information please have a look at:
 
 - GitHub: https://github.com/osiam/osiam
@@ -9,7 +9,7 @@ more information please have a look at:
 
 ## Installation
 
-If you want to run OSIAM server, addon-self-administration and
+If you want to run OSIAM, addon-self-administration and
 addon-administration, please have a look at the READMEs:
 
 - https://github.com/osiam/osiam
@@ -27,13 +27,13 @@ below.
 
 The database should be setup as a first step:
 
-1. https://github.com/osiam/server/blob/master/docs/detailed_reference_installation.md#database-setup
+1. https://github.com/osiam/osiam/blob/master/docs/detailed-reference-installation.md#database-setup
 2. https://github.com/osiam/addon-self-administration/blob/v1.4/docs/databse-setup.md
 3. https://github.com/osiam/addon-administration#database-setup
 
 Next you have to read the configuration documentation of all components
 
-1. https://github.com/osiam/server/blob/master/docs/detailed_reference_installation.md#configuring-osiam
+1. https://github.com/osiam/osiam/blob/master/docs/detailed-reference-installation.md#configuring-osiam
 2. https://github.com/osiam/addon-self-administration/blob/v1.4/docs/configuration.md#configuring-osiam
 3. https://github.com/osiam/addon-administration#installation
 
